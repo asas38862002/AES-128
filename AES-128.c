@@ -208,6 +208,8 @@ int main()
 	printf("%X \n",out)	;*/
 	//r=devide(4,3,&q);
 	printf("t: %X\n",GCD(a,b));
+	printf("t: %X\n",GCD(a,b));
+	
 	//sub(1,2);
 /*
 	printf("Please input two integers divided by a space.\n");
