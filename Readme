@@ -1,0 +1,7 @@
+            "args": [
+                "-g",
+                "${file}",
+                "${workspaceFolder}//GFmath.c",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}"
+            ],
