@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include "GFmath.h"
+#include <stdbool.h> 
 
 int degreed[8]={0x100,0x80,0x40,0x20,0x10,0x8,0x4,0x2,0x1};
 
@@ -98,6 +99,10 @@ int GCD(int a,int b)
 	int temp = 0x00;
 	int temp_muti = 0x00 ;
 	//int  r   = 0x00 ;
+	if(b == 0 )
+	{
+			return 0 ;
+	}
 
 	while(r!=1)
 	{
@@ -134,3 +139,44 @@ int sub(int a,int b){
 	return a-b;
 }
 
+char subbye(int a)
+{
+	unsigned char b = 0x53 ; //  0xCA Hex up and down replace to 0xAC
+	unsigned char b_prime = 0x00 ;
+	unsigned char out = 0 ;
+	unsigned char Temp = 0 ;
+	unsigned char Ob   = 0 ;
+	unsigned char sub[]={0x8f,0xc7,0xE3,0xF1,0xF8,0x7C,0x3E,0x1F};
+	bool c[8]={0x01,0x01,0x00,0x00,0x00,0x01,0x01,0x00};  // c  0x63
+	//b = ( (b^y)<<4 ) ^ x;
+	//printf("a= %X \n",a)	;
+	for(int i=0;i<8;i++)
+	{
+		b_prime = ( i>=1 ) ? (b_prime<<1 )^(a&0x01)  :  b_prime ^ (a&0x01)  ;
+		a = a>>1  ;
+	} // invert a binary
+
+	//printf("b invert= %X \n",b_prime)	;
+		
+	for(int j=0;j<8;j++)
+	{
+		out = 0 ; // init out
+		Temp =  sub[j] & b_prime ; //sub[0]*b
+	//	printf("get %X \n",Temp)	;				
+		
+		for(int i=0;i<8;i++)
+		{
+			
+			out  = out ^ ( Temp&0x01 ) ; 
+			Temp = Temp>>1 ;
+			//printf("get %X \n",out)	;
+		}
+	//	printf("out is %X \n",out)	;
+		out = out ^ c[j] ;
+		Ob =  ( j>=1 ) ? Ob^(out <<j) : Ob^out ;
+		//Ob = Ob^out ; 	
+		//printf("%X \n",out)	;				
+	}	
+	printf("Ob: %X \n",Ob)	;
+	return out ;
+}
