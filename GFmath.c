@@ -2,8 +2,7 @@
 #include "GFmath.h"
 #include <stdbool.h> 
 
-int degreed[8]={0x100,0x80,0x40,0x20,0x10,0x8,0x4,0x2,0x1};
-
+int degreed[9]={0x100,0x80,0x40,0x20,0x10,0x8,0x4,0x2,0x1};
 
 int add(int a,int b)
 {
@@ -177,6 +176,6 @@ char subbye(int a)
 		//Ob = Ob^out ; 	
 		//printf("%X \n",out)	;				
 	}	
-	printf("Ob: %X \n",Ob)	;
-	return out ;
+	//printf("Ob: %X \n",Ob)	;
+	return Ob ;
 }
