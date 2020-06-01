@@ -1,7 +1,7 @@
-            "args": [
-                "-g",
-                "${file}",
-                "${workspaceFolder}//GFmath.c",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
-            ],
+Hi guys. This is AES-128 sample.
+
+I want to learn about AES-128 and implement zero to finish.
+
+If you want to ask me some question, welcome to message here .
+
+I will answer you . Thank you . ^__^
