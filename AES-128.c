@@ -22,6 +22,10 @@ int main()
 	//printf("%X \n",a)	;	
 	//printf("%X \n",b)	;
 	
+	printf("test:%x\n",mutiplication(0x02,0x82) ) ;
+	printf("test:%x\n",mutiplication(0x03,0x30) ) ;
+	printf("test:%x\n",mutiplication(0x01,0xBF) ) ;
+	printf("test:%x\n",mutiplication(0x01,0x9A) ) ;
 
 	printf("add: %X\n",add(a,b));
 	out =  mutiplication(a,b) ; 	
@@ -61,9 +65,12 @@ int main()
 		printf("\n") ;
 	}
 	//====================================subbyte=========================================
-	printf("shift row: \n") ;
+	printf("shiftrow: \n") ;
 	shiftrow(state_prime);
 
+	//====================================shiftrow========================================
+	printf("Mixcolumn: \n") ;
+	mixcolumn(state_prime);
 
 
 	return 0;

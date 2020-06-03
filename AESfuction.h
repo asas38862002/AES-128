@@ -5,7 +5,7 @@
 
 void shiftrow(unsigned char state[][4]); 
 
-
+void mixcolumn(unsigned char state[][4]);
 
 
   

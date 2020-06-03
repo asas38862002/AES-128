@@ -1,6 +1,14 @@
 
 #include<stdio.h>
+#include"GFmath.h"
 
+unsigned char mix[4][4]={
+						 {0x02,0x03,0x01,0x01},
+						 {0x01,0x02,0x03,0x01},
+						 {0x01,0x01,0x02,0x03},
+						 {0x03,0x01,0x01,0x02}
+						
+						};
 
 
 
@@ -44,7 +52,49 @@ void shiftrow(unsigned char state[][4])
 
 } 
 
+void mixcolumn(unsigned char state[][4])
+{
 
+	printf("Ori.\n");
+	for (int i = 0; i < 4; i++)
+	{	
+		for (int j = 0; j < 4; j++)
+		{
+			printf("%X ",state[i][j]);
+			
+			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
+		}
+		printf("\n") ;
+	}
+
+
+
+	for (int i = 0; i < 1; i++)
+	{	
+		state[0][i] = mutiplication(0x02,state[0][i]) ^ mutiplication(0x03,state[1][i]) ^ 
+					  mutiplication(0x01,state[2][i]) ^ mutiplication(0x01,state[3][i]) ;
+		state[1][i] = mutiplication(0x01,state[0][i]) ^ mutiplication(0x02,state[1][i]) ^ 
+					  mutiplication(0x03,state[2][i]) ^ mutiplication(0x01,state[3][i]) ;
+		state[2][i] = mutiplication(0x01,state[0][i]) ^ mutiplication(0x01,state[1][i]) ^ 
+					  mutiplication(0x02,state[2][i]) ^ mutiplication(0x03,state[3][i]) ;
+		state[3][i] = mutiplication(0x03,state[0][i]) ^ mutiplication(0x01,state[1][i]) ^ 
+					  mutiplication(0x01,state[2][i]) ^ mutiplication(0x02,state[3][i]) ;					  					  
+
+	}	
+
+	printf("after.\n");
+	for (int i = 0; i < 4; i++)
+	{	
+		for (int j = 0; j < 4; j++)
+		{
+			printf("%X ",state[i][j]);
+			
+			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
+		}
+		printf("\n") ;
+	}
+
+}
 
 
   
