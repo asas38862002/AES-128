@@ -8,6 +8,7 @@
                 "-g",
                 "${file}",
                 "${workspaceFolder}//GFmath.c",
+                "${workspaceFolder}//AESfuction.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
             ],

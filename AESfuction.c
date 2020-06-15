@@ -9,7 +9,37 @@ unsigned char mix[4][4]={
 						 {0x03,0x01,0x01,0x02}
 						
 						};
+unsigned char 	subbyte[16][16]={0} ;
 
+void creat_sbox()
+{
+	unsigned int 	a  =0x11B ;	
+	unsigned int 	b_prime  =0 ;
+	for (int i = 0; i < 16; i++)
+	{	
+		for (int j = 0; j < 16; j++)
+		{
+			b_prime = GCD(a,j+16*i) ;
+			subbyte[i][j] = subbyte_creat(b_prime);
+		}
+		//b_prime = GCD(a,i) ;
+		//printf("b_prime: %X\n",b_prime);
+	}
+
+	for (int i = 0; i < 16; i++)
+	{
+		for (int j = 0; j < 16; j++)
+			printf("%X ",subbyte[i][j]);
+		printf("\n");
+	}  //display s-box 
+
+}
+
+unsigned char subbytes(unsigned char num)
+{
+
+
+}
 
 
 void shiftrow(unsigned char state[][4])
@@ -96,7 +126,21 @@ void mixcolumn(unsigned char state[][4])
 
 }
 
+void keyExpansion(unsigned char roundkey[4][44])
+{
 
+	printf("roundkey:\n");
+	for(int i =0 ; i<4 ;i++)
+	{
+		for(int j =0 ; j<4 ;j++)
+		{
+			printf("%x ",roundkey[i][j]);
+			
+		}
+			printf("\n");
+	}
+
+}
   
 
 

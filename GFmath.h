@@ -8,7 +8,7 @@
     int devide(int a,int b,int  * q);
     int mutiplication(int a,int b);
     int GCD(int a,int b);
-    char subbye(int a);
+    char subbyte_creat(int a);
 
   
  #endif /* GFmath_H */

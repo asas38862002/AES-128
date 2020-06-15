@@ -138,7 +138,7 @@ int sub(int a,int b){
 	return a-b;
 }
 
-char subbye(int a)
+char subbyte_creat(int a)
 {
 	unsigned char b = 0x53 ; //  0xCA Hex up and down replace to 0xAC
 	unsigned char b_prime = 0x00 ;
