@@ -141,9 +141,9 @@ void keyExpansion(unsigned char roundkey[4][44])
 {
 	unsigned char temp[4] ={0};
 	unsigned char Nword[4] ={0};
-
 	unsigned char swap =0x00;
 	unsigned char Rcon =0x01;
+	unsigned int Nk   = 4 ;
 
 	printf("roundkey:\n");
 	for(int i =0 ; i<4 ;i++)
@@ -155,56 +155,83 @@ void keyExpansion(unsigned char roundkey[4][44])
 		}
 		printf("\n");
 	}
+	//===============================roundkey==========================
+	for(int kb= 3;kb<44;kb++) //first stage last word
+	{
+		//printf("temp: \n");
+		for(int i =0 ; i<4 ;i++)
+		{
+			temp[i] = roundkey[i][kb];
+			//printf("%X ",temp[i]); //temp get first col.
+		}
+		//printf("\n");
+		//==================temp get first col.=======================
 
-	printf("temp: \n");
-	for(int i =0 ; i<4 ;i++)
-	{
-		temp[i] = roundkey[i][3];
-		printf("%X ",temp[i]); //temp get first col.
-	}
-	printf("\n");
-	//==================temp get first col.=======================
-	printf("Rotword temp: \n");
-	swap = temp[0];
-	for(int i =0 ; i<3 ;i++)
-	{
-		temp[i] = temp[i+1];
-		printf("%X ",temp[i]); //temp get first col.
-	}
-	temp[3] =swap ;
-	printf("%X ",temp[3]); //temp get first col.
+		if((kb+1) % Nk==0)
+		{
+			//printf("Rotword temp: \n");
+			swap = temp[0];
+			for(int i =0 ; i<3 ;i++)
+			{
+				temp[i] = temp[i+1];
+				//printf("%X ",temp[i]); //temp get first col.
+			}
+			temp[3] =swap ;
+			//printf("%X ",temp[3]); //temp get first col.
 
-	printf("\n");
-    //==========================Rot word=========================
-	printf("Subword temp: \n");
-	for(int i =0 ; i<4 ;i++)
-	{
-		temp[i]=subbyte[temp[i]>>4 & 0XF][temp[i] & 0XF];
-		printf("%X ",temp[i]);
-	}
-	printf("\n");
- 
-	//==========================sub word=========================
-	printf("XOR Rcon: \n");
-	temp[0] = temp[0]^Rcon ;
-	for(int i =0 ; i<4 ;i++)
-	{
-		printf("%X ",temp[i]);
-	}	
-	Rcon = mutiplication(Rcon,0x02) ;
+			//printf("\n");
 
-	printf("\n");
- 
-	//==========================Xor Rcon=========================
-	printf("New Word: \n");
-	for(int i =0 ; i<4 ;i++)
+			//==========================Rot word=========================
+			//printf("Subword temp: \n");
+			for(int i =0 ; i<4 ;i++)
+			{
+				temp[i]=subbyte[temp[i]>>4 & 0XF][temp[i] & 0XF];
+				//printf("%X ",temp[i]);
+			}
+			//printf("\n");
+		
+			//==========================sub word=========================
+			printf("XOR Rcon: \n");
+			printf("%x",Rcon);
+
+			temp[0] = temp[0]^Rcon ;
+			for(int i =0 ; i<4 ;i++)
+			{
+				//printf("%X ",temp[i]);
+			}	
+			Rcon = mutiplication(Rcon,0x02) ;
+
+			printf("\n");
+		
+			//==========================Xor Rcon=========================
+			printf("New Word: \n");
+			for(int i =0 ; i<4 ;i++)
+			{
+				//Nword[i] = roundkey[i][0] ^ temp[i] ;
+				roundkey[i][kb+1] = 	roundkey[i][kb-3] ^ temp[i] ;
+				printf("%X ",roundkey[i][kb+1]);
+			}
+
+			printf("\n");
+	}//if roundkey is full , temp have to get k-1 stage last word 
+	else 
 	{
-		Nword[i] = roundkey[i][0] ^ temp[i] ;
-		printf("%X ",Nword[i]);
-	}
+		printf("roundkey caculation\n");
+		for(int i =0 ; i<4 ;i++)
+		{
+			//Nword[i] = roundkey[i][0] ^ temp[i] ;
+			roundkey[i][kb+1] = 	roundkey[i][kb-3] ^ temp[i] ;
+			printf("%X ",roundkey[i][kb+1]);
+		}
 		printf("\n");
+	}
 
-}
+		
+
+	}// creat round key for loop 
+
+
+}//void keyExpansion
   
 
 
