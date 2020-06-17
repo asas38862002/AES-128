@@ -76,15 +76,16 @@ int main()
 		printf("\n") ;
 	}
 */
-
-
+	printf("subbyte: \n") ;
+	subbytes(state) ;
+	printf("\n");
 	//====================================subbyte=========================================
 	printf("shiftrow: \n") ;
-	shiftrow(state_prime);
+	shiftrow(state);
 
 	//====================================shiftrow========================================
 	printf("Mixcolumn: \n") ;
-	mixcolumn(state_prime);
+	mixcolumn(state);
 
 
 	return 0;

@@ -25,19 +25,30 @@ void creat_sbox()
 		//b_prime = GCD(a,i) ;
 		//printf("b_prime: %X\n",b_prime);
 	}
-
+	/*
 	for (int i = 0; i < 16; i++)
 	{
 		for (int j = 0; j < 16; j++)
 			printf("%X ",subbyte[i][j]);
 		printf("\n");
 	}  //display s-box 
-
+*/
 }
 
-unsigned char subbytes(unsigned char num)
+void subbytes(unsigned char state[][4])
 {
-
+	for (int i = 0; i < 4; i++)
+	{	
+		for (int j = 0; j < 4; j++)
+		{
+			//printf("%X:= %X,%X\n",state[i][j],state[i][j]>>4 & 0XF,state[i][j] & 0XF) ;
+			state[i][j]=subbyte[state[i][j]>>4 & 0XF][state[i][j] & 0XF];
+			printf("%X ",state[i][j]);
+			
+			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
+		}
+		printf("\n");
+	}
 
 }
 
