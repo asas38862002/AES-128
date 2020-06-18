@@ -145,8 +145,8 @@ void keyExpansion(unsigned char roundkey[4][44])
 	unsigned char Rcon =0x01;
 	unsigned int Nk   = 4 ;
 
-	printf("roundkey:\n");
-	for(int i =0 ; i<4 ;i++)
+	//printf("roundkey:\n");
+	/*for(int i =0 ; i<4 ;i++)
 	{
 		for(int j =0 ; j<4 ;j++)
 		{
@@ -154,9 +154,9 @@ void keyExpansion(unsigned char roundkey[4][44])
 			
 		}
 		printf("\n");
-	}
+	}*/
 	//===============================roundkey==========================
-	for(int kb= 3;kb<44;kb++) //first stage last word
+	for(int kb= 3;kb<43;kb++) //first stage last word
 	{
 		//printf("temp: \n");
 		for(int i =0 ; i<4 ;i++)
@@ -191,8 +191,8 @@ void keyExpansion(unsigned char roundkey[4][44])
 			//printf("\n");
 		
 			//==========================sub word=========================
-			printf("XOR Rcon: \n");
-			printf("%x",Rcon);
+			//printf("XOR Rcon: \n");
+			//printf("%x",Rcon);
 
 			temp[0] = temp[0]^Rcon ;
 			for(int i =0 ; i<4 ;i++)
@@ -201,36 +201,49 @@ void keyExpansion(unsigned char roundkey[4][44])
 			}	
 			Rcon = mutiplication(Rcon,0x02) ;
 
-			printf("\n");
+			//printf("\n");
 		
 			//==========================Xor Rcon=========================
-			printf("New Word: \n");
+			//printf("New Word: \n");
 			for(int i =0 ; i<4 ;i++)
 			{
 				//Nword[i] = roundkey[i][0] ^ temp[i] ;
 				roundkey[i][kb+1] = 	roundkey[i][kb-3] ^ temp[i] ;
-				printf("%X ",roundkey[i][kb+1]);
+				//printf("%X ",roundkey[i][kb+1]);
 			}
 
-			printf("\n");
+			//printf("\n");
 	}//if roundkey is full , temp have to get k-1 stage last word 
 	else 
 	{
-		printf("roundkey caculation\n");
+		//printf("roundkey caculation\n");
 		for(int i =0 ; i<4 ;i++)
 		{
 			//Nword[i] = roundkey[i][0] ^ temp[i] ;
 			roundkey[i][kb+1] = 	roundkey[i][kb-3] ^ temp[i] ;
-			printf("%X ",roundkey[i][kb+1]);
+			//printf("%X ",roundkey[i][kb+1]);
 		}
-		printf("\n");
+		//printf("\n");
 	}
 
 		
 
 	}// creat round key for loop 
-
-
+/*
+	for(int k =0 ; k<11 ;k++)
+	{
+		printf("state %d:\n",k);
+		for(int i =0 ; i<4 ;i++)
+		{
+			for(int j =0 ; j<4 ;j++)
+			{
+				printf("%x ",roundkey[i][j+4*k]);
+				
+			}
+			printf("\n");
+		}
+	}
+*/
 }//void keyExpansion
   
 

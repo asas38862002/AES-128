@@ -19,6 +19,22 @@ int main()
 	keyExpansion(roundkey);
 
 
+	printf("roundkey:\n");
+	for(int k =0 ; k<11 ;k++)
+	{
+		printf("state %d:\n",k);
+		for(int i =0 ; i<4 ;i++)
+		{
+			for(int j =0 ; j<4 ;j++)
+			{
+				printf("%x ",roundkey[i][j+4*k]);
+				
+			}
+			printf("\n");
+		}
+	}
+
+
 	unsigned char   state[4][4]={
 								 {0x11,0X24,0X28,0X44},
 								 {0x01,0x08,0x19,0x49},
