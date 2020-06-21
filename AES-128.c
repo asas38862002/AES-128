@@ -14,34 +14,19 @@ int main()
 																		   {0x15,0xd2,0x15,0x4f},
 																		   {0x16,0xa6,0x88,0x3C},
 																	    } ;
-	creat_sbox() ;
+	creat_sbox() ;//create s-box  
 
-	keyExpansion(roundkey);
+	keyExpansion(roundkey); //create round key  
 
-
-	printf("roundkey:\n");
-	for(int k =0 ; k<11 ;k++)
-	{
-		printf("state %d:\n",k);
-		for(int i =0 ; i<4 ;i++)
-		{
-			for(int j =0 ; j<4 ;j++)
-			{
-				printf("%x ",roundkey[i][j+4*k]);
-				
-			}
-			printf("\n");
-		}
-	}
-
+	//displaykeyExpansion(roundkey);
 
 	unsigned char   state[4][4]={
-								 {0x11,0X24,0X28,0X44},
-								 {0x01,0x08,0x19,0x49},
-								 {0x66,0x55,0xF4,0xD6},
-								 {0x18,0x21,0x27,0x37}
+								 {0x32,0X88,0X31,0XE0},
+								 {0x43,0x5A,0x31,0x37},
+								 {0xF6,0x30,0x98,0x07},
+								 {0xA8,0x8D,0xA2,0x34}
 								};
-	unsigned char   state_prime[4][4]={0};
+	//unsigned char   state_prime[4][4]={0};
 	
 	//printf("%X \n",a)	;	
 	//printf("%X \n",b)	;
@@ -51,6 +36,10 @@ int main()
 	printf("test:%x\n",mutiplication(0x01,0xBF) ) ;
 	printf("test:%x\n",mutiplication(0x01,0x9A) ) ;
 */
+
+
+	addroundkey(state,roundkey,0);
+	//===================================== addroundkey=======================================
 	//===================================== Build s-box table=======================================
 
 

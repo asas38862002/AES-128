@@ -12,6 +12,10 @@ void keyExpansion(unsigned char roundkey[4][44]);
 void creat_sbox();
 
 void subbytes(unsigned char state[][4]);
+
+void displaykeyExpansion(unsigned char roundkey[4][44]);
+
+void addroundkey(unsigned char state[][4],unsigned char roundkey[4][44],int round);
   
  #endif /* AESfuction */
 
