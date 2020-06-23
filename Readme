@@ -5,3 +5,9 @@ I want to learn about AES-128 and implement zero to finish.
 If you want to ask me some question, welcome to message here .
 
 I will answer you . Thank you . ^__^
+
+109.6.23
+
+I finish the AES-128 encryption code.
+
+If you want use and run the code u can command this "gcc AES-128.c AESfuction.c GFmath.c -o demo"
