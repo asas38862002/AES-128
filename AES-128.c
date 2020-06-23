@@ -37,24 +37,36 @@ int main()
 	printf("test:%x\n",mutiplication(0x01,0x9A) ) ;
 */
 
-
+	printf("addroundkey\n" ) ;
 	addroundkey(state,roundkey,0);
 	//===================================== addroundkey=======================================
-	//===================================== Build s-box table=======================================
-
-
-	//===================================== display s-box table=======================================
-
+	for(int i = 1 ;i<10;i++)
+	{
+		printf("subbyte: \n") ;
+		subbytes(state) ;
+		//====================================subbyte=========================================
+		printf("shiftrow: \n") ;
+		shiftrow(state);
+		//====================================shiftrow========================================
+		printf("Mixcolumn: \n") ;
+		mixcolumn(state);
+		//====================================Mixcolumn========================================
+		printf("addroundkey\n" ) ;
+		addroundkey(state,roundkey,i);
+		//===================================== addroundkey=======================================
+	}
 	printf("subbyte: \n") ;
 	subbytes(state) ;
-	printf("\n");
 	//====================================subbyte=========================================
 	printf("shiftrow: \n") ;
 	shiftrow(state);
-
 	//====================================shiftrow========================================
-	printf("Mixcolumn: \n") ;
-	mixcolumn(state);
+	printf("addroundkey\n" ) ;
+	addroundkey(state,roundkey,10);
+	//===================================== addroundkey=======================================
+
+
+
 
 
 	return 0;

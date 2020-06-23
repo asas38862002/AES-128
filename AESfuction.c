@@ -97,7 +97,7 @@ void mixcolumn(unsigned char state[][4])
 {
 	unsigned char temp[4][4]={0};
 
-	printf("Ori.\n");
+	/*printf("Ori.\n");
 	for (int i = 0; i < 4; i++)
 	{	
 		for (int j = 0; j < 4; j++)
@@ -107,7 +107,7 @@ void mixcolumn(unsigned char state[][4])
 			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
 		}
 		printf("\n") ;
-	}
+	}*/
 
 
 	for (int i = 0; i < 4; i++)
