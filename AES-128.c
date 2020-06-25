@@ -56,6 +56,9 @@ int main()
 		//printf("addroundkey\n" ) ;
 		addroundkey(state,roundkey,i);
 		//===================================== addroundkey=======================================
+		
+		//displaystate(state);
+		//printf("\n");
 	}
 	//printf("subbyte: \n") ;
 	subbytes(state) ;
@@ -70,6 +73,18 @@ int main()
 	displaystate(state);
 
 	//===================================== Inv_STEP=======================================
+
+	addroundkey(state,roundkey,10);
+	displaystate(state);
+
+	Inv_shiftrow(state);
+	displaystate(state);
+
+	Inv_subbytes(state);
+	displaystate(state);
+
+	addroundkey(state,roundkey,9);
+	displaystate(state);
 
 	return 0;
 
