@@ -40,6 +40,11 @@ int main()
 */
 
 	//printf("addroundkey\n" ) ;
+
+	printf("Plaintext\n");
+	displaystate(state);
+
+
 	addroundkey(state,roundkey,0);
 	//===================================== addroundkey=======================================
 	for(int i = 1 ;i<10;i++)
@@ -69,7 +74,7 @@ int main()
 	//printf("addroundkey\n" ) ;
 	addroundkey(state,roundkey,10);
 	//===================================== addroundkey=======================================
-
+	printf("Encrytion\n");
 	displaystate(state);
 
 	//===================================== Inv_STEP=======================================
@@ -78,7 +83,7 @@ int main()
 
 
 	addroundkey(state,roundkey,10);
-	displaystate(state);
+	//displaystate(state);
 	//===================================== addroundkey=======================================
 	for(int i = 9 ;i>0;i--)
 	{
@@ -102,6 +107,7 @@ int main()
 	//displaystate(state);
 	//===================================== Inv_subbyte=======================================
 	addroundkey(state,roundkey,0);
+	printf("Decrytion\n");
 	displaystate(state);
 	//===================================== addroundkey=======================================
 

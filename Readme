@@ -11,3 +11,13 @@ I will answer you . Thank you . ^__^
 I finish the AES-128 encryption code.
 
 If you want use and run the code u can command this "gcc AES-128.c AESfuction.c GFmath.c -o demo"
+
+109.6.25
+
+I finish all AES-128 encryption code.
+
+U can command this "gcc AES-128.c AESfuction.c GFmath.c -o demo"
+
+Reference:https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
+
+If you have any question,you can mail and discuss them. Thank you !!  
