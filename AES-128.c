@@ -74,17 +74,42 @@ int main()
 
 	//===================================== Inv_STEP=======================================
 
+
+
+
 	addroundkey(state,roundkey,10);
 	displaystate(state);
-
+	//===================================== addroundkey=======================================
+	for(int i = 9 ;i>0;i--)
+	{
+		Inv_shiftrow(state);
+		//displaystate(state);
+		//===================================== Inv_shiftrow=======================================
+		Inv_subbytes(state);
+		//displaystate(state);
+		//===================================== Inv_subbyte=======================================
+		addroundkey(state,roundkey,i);
+		//displaystate(state);
+		//===================================== addroundkey=======================================
+		Inv_mixcolumn(state);
+		//displaystate(state);
+		//===================================== Inv_mixcolumn=======================================
+	}
 	Inv_shiftrow(state);
-	displaystate(state);
-
+	//displaystate(state);
+	//===================================== Inv_shiftrow=======================================
 	Inv_subbytes(state);
+	//displaystate(state);
+	//===================================== Inv_subbyte=======================================
+	addroundkey(state,roundkey,0);
 	displaystate(state);
+	//===================================== addroundkey=======================================
 
-	addroundkey(state,roundkey,9);
-	displaystate(state);
+
+
+
+
+
 
 	return 0;
 

@@ -24,6 +24,8 @@ void displaystate(unsigned char state[][4]);
 void creat_Inv_sbox();
 
 void Inv_shiftrow(unsigned char state[][4]);
+
+void Inv_mixcolumn(unsigned char state[][4]);
   
  #endif /* AESfuction */
 

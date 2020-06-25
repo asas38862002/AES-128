@@ -225,6 +225,57 @@ void mixcolumn(unsigned char state[][4])
 
 }
 
+void Inv_mixcolumn(unsigned char state[][4])
+{
+	unsigned char temp[4][4]={0};
+
+	/*printf("Ori.\n");
+	for (int i = 0; i < 4; i++)
+	{	
+		for (int j = 0; j < 4; j++)
+		{
+			printf("%X ",state[i][j]);
+			
+			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
+		}
+		printf("\n") ;
+	}*/
+
+
+	for (int i = 0; i < 4; i++)
+	{	
+		temp[0][i] = mutiplication(0x0e,state[0][i]) ^ mutiplication(0x0b,state[1][i]) ^ 
+					  mutiplication(0x0d,state[2][i]) ^ mutiplication(0x09,state[3][i]) ;
+		temp[1][i] = mutiplication(0x09,state[0][i]) ^ mutiplication(0x0e,state[1][i]) ^ 
+					  mutiplication(0x0b,state[2][i]) ^ mutiplication(0x0d,state[3][i]) ;
+		temp[2][i] = mutiplication(0x0d,state[0][i]) ^ mutiplication(0x09,state[1][i]) ^ 
+					  mutiplication(0x0e,state[2][i]) ^ mutiplication(0x0b,state[3][i]) ;
+		temp[3][i] = mutiplication(0x0b,state[0][i]) ^ mutiplication(0x0d,state[1][i]) ^ 
+					  mutiplication(0x09,state[2][i]) ^ mutiplication(0x0e,state[3][i]) ;					  					  
+
+	}
+
+
+	//printf("after.\n");
+	for (int i = 0; i < 4; i++)
+	{	
+		for (int j = 0; j < 4; j++)
+		{
+			state[i][j] = temp[i][j] ;  
+			//printf("%X ",state[i][j]); 
+		}
+	//	printf("\n") ;
+	}
+
+}
+
+
+
+
+
+
+
+
 void keyExpansion(unsigned char roundkey[4][44])
 {
 	unsigned char temp[4] ={0};
