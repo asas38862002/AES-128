@@ -9,6 +9,7 @@
     int mutiplication(int a,int b);
     int GCD(int a,int b);
     char subbyte_creat(int a);
+    char Inv_subbyte_creat(int a);
 
   
  #endif /* GFmath_H */

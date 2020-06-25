@@ -16,6 +16,10 @@ void subbytes(unsigned char state[][4]);
 void displaykeyExpansion(unsigned char roundkey[4][44]);
 
 void addroundkey(unsigned char state[][4],unsigned char roundkey[4][44],int round);
+
+void displaystate(unsigned char state[][4]);
+
+void creat_Inv_sbox();
   
  #endif /* AESfuction */
 

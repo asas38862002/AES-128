@@ -10,6 +10,8 @@ unsigned char mix[4][4]={
 						
 						};
 unsigned char 	subbyte[16][16]={0} ;
+unsigned char 	Inv_subbyte[16][16]={0} ;
+
 
 void creat_sbox()
 {
@@ -35,6 +37,31 @@ void creat_sbox()
 */
 }
 
+
+void creat_Inv_sbox()
+{
+	unsigned int 	a  =0x11B ;	
+	unsigned int 	b_prime  =0 ;
+	//unsigned  int temp  = 0x00
+	for (int i = 0; i < 16; i++)
+	{	
+		for (int j = 0; j < 16; j++)
+		{
+			b_prime = Inv_subbyte_creat(j+16*i) & 0xff ;
+			Inv_subbyte[i][j] = GCD(a,b_prime) ;
+		}
+	}
+	
+/*	for (int i = 0; i < 16; i++)
+	{
+		for (int j = 0; j < 16; j++)
+			printf("%X ",Inv_subbyte[i][j]);
+		printf("\n");
+	}  //display Inv_s-box 
+*/
+}
+
+
 void subbytes(unsigned char state[][4])
 {
 	for (int i = 0; i < 4; i++)
@@ -43,11 +70,11 @@ void subbytes(unsigned char state[][4])
 		{
 			//printf("%X:= %X,%X\n",state[i][j],state[i][j]>>4 & 0XF,state[i][j] & 0XF) ;
 			state[i][j]=subbyte[state[i][j]>>4 & 0XF][state[i][j] & 0XF];
-			printf("%X ",state[i][j]);
+			//printf("%X ",state[i][j]);
 			
 			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
 		}
-		printf("\n");
+		//printf("\n");
 	}
 
 }
@@ -80,7 +107,7 @@ void shiftrow(unsigned char state[][4])
 	}
 	state[3][0] = tmp ;
 
-	for (int i = 0; i < 4; i++)
+	/*for (int i = 0; i < 4; i++)
 	{	
 		for (int j = 0; j < 4; j++)
 		{
@@ -89,7 +116,7 @@ void shiftrow(unsigned char state[][4])
 			//printf("%x ",state[i][j]>>4 & 0XFF) ; 
 		}
 		printf("\n") ;
-	}
+	}*/
 
 } 
 
@@ -124,15 +151,15 @@ void mixcolumn(unsigned char state[][4])
 	}
 
 
-	printf("after.\n");
+	//printf("after.\n");
 	for (int i = 0; i < 4; i++)
 	{	
 		for (int j = 0; j < 4; j++)
 		{
 			state[i][j] = temp[i][j] ;  
-			printf("%X ",state[i][j]); 
+			//printf("%X ",state[i][j]); 
 		}
-		printf("\n") ;
+	//	printf("\n") ;
 	}
 
 }
@@ -268,19 +295,19 @@ void displaykeyExpansion(unsigned char roundkey[4][44])
 void addroundkey(unsigned char state[][4],unsigned char roundkey[4][44],int round)
 {
 	int  stagenum = 0 ;
-	printf("state %d\n",round);
+	//printf("state %d\n",round);
 	for(int i = 0 ;i<4;i++)
 	{
 		for(int j = round*4 ; j<=(round+1)*4-1;j++)
 		{
 		    //printf("%x ",roundkey[i][j]) ;
 			state[i][stagenum] = state[i][stagenum]^roundkey[i][j] ;
-			printf("%x ",state[i][stagenum]) ;
+			//printf("%x ",state[i][stagenum]) ;
 			//printf("%x XOR %X \n",state[i][stagenum],roundkey[i][j]) ;
 			stagenum = stagenum + 1 ;	
 		}
 		stagenum = 0 ;
-		printf("\n") ;
+		//printf("\n") ;
 	}
 
 /*	printf("Oristate \n");
@@ -297,3 +324,16 @@ void addroundkey(unsigned char state[][4],unsigned char roundkey[4][44],int roun
 
 }
 
+void displaystate(unsigned char state[][4])
+{
+	for(int i = 0 ;i<4;i++)
+	{
+		for(int j = 0 ; j<4;j++)
+		{
+			printf("%X ",state[i][j]);
+
+		}
+		printf("\n");
+	}
+
+}

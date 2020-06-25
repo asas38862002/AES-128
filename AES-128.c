@@ -16,6 +16,8 @@ int main()
 																	    } ;
 	creat_sbox() ;//create s-box  
 
+	creat_Inv_sbox() ;
+
 	keyExpansion(roundkey); //create round key  
 
 	//displaykeyExpansion(roundkey);
@@ -37,37 +39,37 @@ int main()
 	printf("test:%x\n",mutiplication(0x01,0x9A) ) ;
 */
 
-	printf("addroundkey\n" ) ;
+	//printf("addroundkey\n" ) ;
 	addroundkey(state,roundkey,0);
 	//===================================== addroundkey=======================================
 	for(int i = 1 ;i<10;i++)
 	{
-		printf("subbyte: \n") ;
+		//printf("subbyte: \n") ;
 		subbytes(state) ;
 		//====================================subbyte=========================================
-		printf("shiftrow: \n") ;
+		//printf("shiftrow: \n") ;
 		shiftrow(state);
 		//====================================shiftrow========================================
-		printf("Mixcolumn: \n") ;
+		//printf("Mixcolumn: \n") ;
 		mixcolumn(state);
 		//====================================Mixcolumn========================================
-		printf("addroundkey\n" ) ;
+		//printf("addroundkey\n" ) ;
 		addroundkey(state,roundkey,i);
 		//===================================== addroundkey=======================================
 	}
-	printf("subbyte: \n") ;
+	//printf("subbyte: \n") ;
 	subbytes(state) ;
 	//====================================subbyte=========================================
-	printf("shiftrow: \n") ;
+	//printf("shiftrow: \n") ;
 	shiftrow(state);
 	//====================================shiftrow========================================
-	printf("addroundkey\n" ) ;
+	//printf("addroundkey\n" ) ;
 	addroundkey(state,roundkey,10);
 	//===================================== addroundkey=======================================
 
+	displaystate(state);
 
-
-
+	//===================================== Inv_STEP=======================================
 
 	return 0;
 

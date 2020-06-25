@@ -179,3 +179,46 @@ char subbyte_creat(int a)
 	//printf("Ob: %X \n",Ob)	;
 	return Ob ;
 }
+
+
+char Inv_subbyte_creat(int a)
+{
+	unsigned char b = 0x53 ; //  0xCA Hex up and down replace to 0xAC
+	unsigned char b_prime = 0x00 ;
+	unsigned char out = 0 ;
+	unsigned char Temp = 0 ;
+	unsigned char Ob   = 0 ;
+	unsigned char sub[]={0x25,0x92,0x49,0xA4,0x52,0x29,0x94,0x4A};
+	bool c[8]={0x01,0x00,0x01,0x00,0x00,0x00,0x00,0x00};  // c  0x05
+	//b = ( (b^y)<<4 ) ^ x;
+	printf("a= %X \n",a)	;
+	for(int i=0;i<8;i++)
+	{
+		b_prime = ( i>=1 ) ? (b_prime<<1 )^(a&0x01)  :  b_prime ^ (a&0x01)  ;
+		a = a>>1  ;
+	} // invert a binary
+
+	//printf("b invert= %X \n",b_prime)	;
+		
+	for(int j=0;j<8;j++)
+	{
+		out = 0 ; // init out
+		Temp =  sub[j] & b_prime ; //sub[0]*b
+	//	printf("get %X \n",Temp)	;				
+		
+		for(int i=0;i<8;i++)
+		{
+			
+			out  = out ^ ( Temp&0x01 ) ; 
+			Temp = Temp>>1 ;
+			//printf("get %X \n",out)	;
+		}
+	//	printf("out is %X \n",out)	;
+		out = out ^ c[j] ;
+		Ob =  ( j>=1 ) ? Ob^(out <<j) : Ob^out ;
+		//Ob = Ob^out ; 	
+		//printf("%X \n",out)	;				
+	}	
+	//printf("Ob: %X \n",Ob)	;
+	return Ob ;
+}
