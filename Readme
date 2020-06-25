@@ -16,7 +16,7 @@ If you want use and run the code u can command this "gcc AES-128.c AESfuction.c 
 
 I finish all AES-128 encryption code.
 
-U can command this "gcc AES-128.c AESfuction.c GFmath.c -o demo"
+U can command this "gcc AES-128.c AESfuction.c GFmath.c -o demo" on the project .
 
 Reference:https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.197.pdf
 
